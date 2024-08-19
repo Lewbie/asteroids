@@ -1,9 +1,10 @@
 from circleshape import *
 
-def player(CircleShape):
-    def __init__(x, y):
-        position = pygame.Vector2(x,y)
-        rotation = 0
+class player(CircleShape):
+    def __init__(self,x, y):
+        self.position = pygame.Vector2(x,y)
+        self.rotation = 0
+        self.radius = 10
 
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
@@ -13,4 +14,4 @@ def player(CircleShape):
         c = self.position - forward * self.radius + right
         return [a, b, c]
     def draw(self, screen):
-        pygame.draw.polygon(screen,"white",self.triangle,2)
+        pygame.draw.polygon(screen,"white",self.triangle(),2)
